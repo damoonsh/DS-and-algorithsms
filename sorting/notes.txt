@@ -1,0 +1,23 @@
+
+
+- Bubble sort:
+    It compares two indexes at a time and changes their position if the bigger
+    one is on the left sie (and we are sorting in a ascending order). This algorithm
+    can be improved when we break the loop given there are no switches and hence the
+    algorithm is sorted. O(n^2)
+
+- Selection Sort:
+    This algorithm does one exchange per pass, it looks at the largest value and puts
+    into the last index. It pushes the biggest item to the end of the array. O(n^2)
+
+Note: Selection > Bubble, in benchmark studies, bubble sort is slower.
+
+- Insertion sort:
+    It has a sorted sub-list of the array, and each time a new element is added to 
+    the index where the sub-list would remain sorted. In the best situation there 
+    will be one comparison for each pass hence O(n) for best case and O(n^2) in 
+    the worst case scenario
+
+- Shell sort
+
+- Quick Sort: Worst case = O(n^2), Best Case: O(n log(n))
