@@ -1,0 +1,10 @@
+c-6.15: When using only one comparision, we can check to see if
+the current node is biggest or its next node. But we don't have 
+access to the next next node. So the biggest node should either 
+be the first node or its next, for us to determine it correctly.
+The chance of having it at the first two: - - | - is 4 and they
+are 6 permutations which will give us 4/6=2/3.
+
+c-6.19: Instead pushing the whole content between the two tags,
+only the first word which is the tag, should be pushed.
+
