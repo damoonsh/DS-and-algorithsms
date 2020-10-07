@@ -1,0 +1,155 @@
+Damoon Shah Hosseini - 500963509
+----------------------------------------------------------------------------------
+Q1:
+# Solution 1
+def switch_halves(array):
+    return array[len(array) // 2:] + array[:len(array) // 2]
+
+def average_arr(array):
+    return sum(array) / len(array)
+
+def halves_averages(array):
+    return average_arr(array[:len(array) // 2]), average_arr(array[len(array) // 2:])
+
+# Solution 2
+def q1(arr):
+    avg1, avg2 = 0, 0
+
+    for i in range(0, len(arr) // 2):
+        avg1 += arr[i]
+
+        holder = arr[i]
+        arr[i] = arr[len(arr) // 2 + i]
+        arr[len(arr) // 2 + i] = holder
+    
+    avg2 = 2 * (sum(arr) - avg1 ) / len(arr)
+
+    return arr, avg1 * 2 /  len(arr), avg2
+----------------------------------------------------------------------------------
+Q2:
+def arrange_array(arr):
+    index, new_arr = 0, []
+
+    while index < len(arr):
+        if arr[index] % 2 == 0:
+            new_arr.append(arr[index])
+            del arr[index]
+        else:
+            index += 1
+
+    return new_arr + arr
+----------------------------------------------------------------------------------
+Q3: 
+import sys
+
+data = []
+capacity = sys.getsizeof(data)
+
+for k in range(1,50):
+    a = len(data)
+    b = sys.getsizeof(data)
+    if b != capacity:
+        capacity = sys.getsizeof(data)
+        print('Length: {0:3d}; Size in bytes: {1:4d}'.format(a,b))
+    data.append(None)
+----------------------------------------------------------------------------------
+Q4:
+import ctypes
+
+class DynamicArray:
+
+    def __init__(self):
+        self._n = 0
+        self._capacity = 1
+        self._A = self._make_array(self._capacity)
+
+    def __len__(self):
+        return self._n
+
+    def __get_item__(self, k):
+        if not (-1 * self._n <= k < self._n):
+            raise IndexError('invalid index')
+
+        if k < 0: return self._A[self._n + k]
+        
+        return self._A[k]
+
+    def append(self, obj):
+        if self._n == self._capacity:
+            self._resize(2 * self._capacity)
+        self._A[self._n] = obj
+
+        self._n += 1
+
+    def _resize(self, c):
+        B = self._make_array(c)
+        for k in range(self._n):
+            B[k] = self._A[k]
+        
+        self._A = B
+        self._capacity = c
+
+    def _make_array(self, c):
+        return (c * ctypes.py_object)()
+----------------------------------------------------------------------------------
+Q5:
+import ctypes
+
+class DynamicArray:
+
+    def __init__(self):
+        self._n = 0
+        self._capacity = 1
+        self._A = self._make_array(self._capacity)
+
+    def __len__(self):
+        return self._n
+
+    def __get_item__(self, k):
+        if not (-1 * self._n <= k < self._n):
+            raise IndexError('invalid index')
+
+        if k < 0: return self._A[self._n + k]
+        
+        return self._A[k]
+
+    def append(self, obj):
+        if self._n == self._capacity:
+            self._resize(2 * self._capacity)
+        self._A[self._n] = obj
+
+        self._n += 1
+    
+    def insert(self, k, value):
+        if self._n == self._capacity:
+            print("hit")
+            self._capacity *= 2
+            B = self._make_array(self._capacity)
+            for j in range(self._n, -1, -1):
+                if j == k:
+                    B[j] = value
+                elif j < k:
+                    B[j] = self._A[j]
+                else:
+                    B[j] = self._A[j-1]
+            
+            self._A = B
+        else:
+            for j in range(self._n, k, -1):
+                self._A[j] = self._A[j-1]
+        
+            self._A[k] = value
+        
+        self._n += 1
+
+    def _resize(self, c):
+        B = self._make_array(c)
+        for k in range(self._n):
+            B[k] = self._A[k]
+        
+        self._A = B
+        self._capacity = c
+
+    def _make_array(self, c):
+        return (c * ctypes.py_object)()
+----------------------------------------------------------------------------------
